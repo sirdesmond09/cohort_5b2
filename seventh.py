@@ -94,6 +94,7 @@ while True:
     if choice == 'y':
         continue
     else:
+        print("Game over!")
         break
 
     
