@@ -1,1 +1,2 @@
-print('correction')
+if 'a' == 'b':
+    print("A is B")
