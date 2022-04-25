@@ -1,1 +1,2 @@
-{'0498746063': {'name': 'Desmond', 'age': 33, 'acc_type': 'current', 'bal': 40000, 'pin': '2233'}}
+{'0883827985': {'name': 'Harry', 'age': 45, 'acc_type': 'savings', 'bal': 1000, 'pin': '4432', 'is_active': False}, '0341021873': {'name': 'Chioma', 'age': 55, 'acc_type': 'current', 'bal': 3000, 'pin': '5324', 'is_active': True}}
+{'0883827985': [{'amount': 4000, 'status': 'credit', 'action': 'deposit', 'trans_date': '2022-04-25 12:01:40.496214'}, {'amount': 3000, 'status': 'debit', 'action': 'transfer', 'trans_date': '2022-04-25 12:02:25.785728'}], '0341021873': [{'amount': 3000, 'status': 'credit', 'action': 'transfer', 'trans_date': '2022-04-25 12:02:25.785862'}]}
