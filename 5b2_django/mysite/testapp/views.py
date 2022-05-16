@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http.response import HttpResponse
 
 
@@ -19,7 +19,17 @@ def html_home_page(request):
     return render(request, "home.html", context)
 
 def contact_us(request):
+    mean = None
+    
+    if request.method == "POST":
+        num = request.POST.get("numbers")
+        numbers = list(map(int, num.split(",")))
+        mean = round((sum(numbers)/len(numbers)), 2)
+        # return redirect("home")
+        
     context = {
-        "section":"contact"
+        "section":"contact",
+        "mean" : mean
     }
+    
     return render(request, "contact.html", context)
