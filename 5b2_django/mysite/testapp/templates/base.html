@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        
+        {% endblock title %}
+
+    </title>
+</head>  
+
+<body style="background:#aaa">
+    <div>
+        <nav>
+            <a {% if section == "home" %} style= "color: cyan" {% endif %}  href="{% url 'home' %}">Home</a>
+            <a {% if section == "about" %} style= "color: cyan" {% endif %} href="{% url 'about' %}">About</a>
+            <a {% if section == "contact" %} style= "color: cyan" {% endif %} href="{% url 'contact' %}">Contact Us</a>
+        </nav>
+    </div>
+
+
+    <div>
+        {% block body %}
+        
+        {% endblock body %}
+    </div>
+
+    
+</body>
+</html>
