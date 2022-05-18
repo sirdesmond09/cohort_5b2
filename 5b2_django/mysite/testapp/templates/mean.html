@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Mean
+{% endblock title %}
+
+{% block body %}
+<div>
+    <h3>Find the Mean!</h3>
+    <p>Enter the numbers into the box below. Seperate them by comma.</p>
+</div>
+
+<form method="POST">
+    {% csrf_token %}
+    <label for="fname">Numbers:</label>
+    <input type="text" id="fname" name="numbers"><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+{% if mean %}
+<div>
+    <h3>Mean:</h3>
+    <p>The mean value is {{ mean }}.</p>
+</div>
+{% endif %}
+
+{% endblock body %}
+

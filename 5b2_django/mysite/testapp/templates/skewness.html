@@ -2,12 +2,12 @@
 
 
 {% block title %}
-Contact Us
+Skewness
 {% endblock title %}
 
 {% block body %}
 <div>
-    <h3>Find the Mean!</h3>
+    <h3>Find the Skewness!</h3>
     <p>Enter the numbers into the box below. Seperate them by comma.</p>
 </div>
 
@@ -18,10 +18,10 @@ Contact Us
     <input type="submit" value="Submit">
 </form>
 
-{% if mean %}
+{% if skewness %}
 <div>
-    <h3>Mean:</h3>
-    <p>The mean value is {{ mean }}.</p>
+    <h3>Skewness:</h3>
+    <p>The skewness is {{ skewness }}.</p>
 </div>
 {% endif %}
 

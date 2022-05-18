@@ -17,7 +17,10 @@
         <nav>
             <a {% if section == "home" %} style= "color: cyan" {% endif %}  href="{% url 'home' %}">Home</a>
             <a {% if section == "about" %} style= "color: cyan" {% endif %} href="{% url 'about' %}">About</a>
-            <a {% if section == "contact" %} style= "color: cyan" {% endif %} href="{% url 'contact' %}">Contact Us</a>
+            <a {% if section == "mean" %} style= "color: cyan" {% endif %} href="{% url 'mean' %}">Mean</a>
+            <a {% if section == "median" %} style= "color: cyan" {% endif %} href="{% url 'median' %}">Median</a>
+            <a {% if section == "std_dev" %} style= "color: cyan" {% endif %} href="{% url 'std_dev' %}">Standard Deviation</a>
+            <a {% if section == "skewness" %} style= "color: cyan" {% endif %} href="{% url 'skewness' %}">Skewness</a>
         </nav>
     </div>
 
