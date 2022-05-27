@@ -8,6 +8,9 @@ Cohort 5b2 Blog
 
 {% block content %}
     <h1>Cohort 5b2 Blog</h1>
+    {% if tag %}
+        <h2>Posts tagged with "{{ tag.name }}"</h2>
+    {% endif %}
     {% for post in posts %}
         <h2>
             <a href="{{ post.get_absolute_url }}">
@@ -16,6 +19,13 @@ Cohort 5b2 Blog
         </h2>
         <p class="date">
             Published {{ post.publish }} by {{ post.author | capfirst }}
+        </p>
+        <p class="tags">
+            Tags:
+                {% for tag in post.tags.all %}
+                    <a href="{% url "blog:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
         </p>
         {{ post.body|truncatewords:30|linebreaks }}
     {% endfor %}
