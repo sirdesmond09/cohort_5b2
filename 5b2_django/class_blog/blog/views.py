@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import get_object_or_404, render
 from .models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -53,9 +54,8 @@ def post_share(request, post_id):
             subject = f"{cd['name']} recommends you read {post.title}"
             message = f"Read {post.title} at {post_url}\n\n{cd['name']}\'s comments:\n{cd['comments']}"
             
-            sender = "Basit from Bolt <admin@myblog.com>"
-            send_mail(subject, message, sender,
-            [cd['to']])
+            # sender = 
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL,[cd['to']])
             sent = True
 
             
