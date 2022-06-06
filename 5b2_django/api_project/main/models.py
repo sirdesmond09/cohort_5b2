@@ -1,8 +1,12 @@
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from taggit.managers import TaggableManager
+
+
+User = get_user_model()
+
 
 class Post(models.Model):
     STATUS_CHOICES = (
