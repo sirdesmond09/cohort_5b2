@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     "taggit",
     'rest_framework',
     "account",
+    "coreapi",
+    'drf_yasg',
     ]
 
 MIDDLEWARE = [

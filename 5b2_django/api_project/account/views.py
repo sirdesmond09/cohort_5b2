@@ -10,6 +10,8 @@ from rest_framework import generics
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth import authenticate, login
 from django.forms import model_to_dict
+from drf_yasg.utils import swagger_auto_schema
+from rest_framework.decorators import action
 
 UserModel = get_user_model()
 
@@ -45,6 +47,9 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class LoginView(APIView):
     
+    
+    @swagger_auto_schema(method="post", request_body = LoginSerializer(), operation_description='Login endpoint for all users', )
+    @action(methods=['post'], detail=True)
     def post(self, request, format=None):
         serializer = LoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)

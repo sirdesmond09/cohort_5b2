@@ -4,22 +4,27 @@ from rest_framework import status
 from .models import Post
 from .serializers import PostSerializer
 from rest_framework.exceptions import NotFound
-
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 class BlogPostList(APIView):
-    
     """
     List all blog posts, or create a new post.
     """
     
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+    
     def get(self, request, format=None):
-        blog_posts = Post.objects.filter(status="published")
-        serializer = PostSerializer(blog_posts, many=True)
+        user = request.user #get all the users
+        blog_posts = user.blog_posts.filter(status="published") #get all publihsed post for loggedin user
+        serializer = PostSerializer(blog_posts, many=True) #serialize the data
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, format=None):
         serializer = PostSerializer(data=request.data)
         if serializer.is_valid():
+            serializer.validated_data['author'] = request.user
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
