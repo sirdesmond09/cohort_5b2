@@ -15,32 +15,32 @@ from rest_framework.decorators import action
 
 UserModel = get_user_model()
 
-class UserList(mixins.ListModelMixin,
-                  mixins.CreateModelMixin,
-                  generics.GenericAPIView):
-    queryset = UserModel.objects.all()
-    serializer_class = CustomUserSerializer
+# class UserList(mixins.ListModelMixin,
+#                   mixins.CreateModelMixin,
+#                   generics.GenericAPIView):
+#     queryset = UserModel.objects.all()
+#     serializer_class = CustomUserSerializer
 
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
+#     def get(self, request, *args, **kwargs):
+#         return self.list(request, *args, **kwargs)
 
-    def post(self, request, *args, **kwargs):
+#     def post(self, request, *args, **kwargs):
         
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user_password = serializer.validated_data.pop('password')
-        serializer.validated_data['password'] = make_password(user_password)
+#         serializer = self.get_serializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         user_password = serializer.validated_data.pop('password')
+#         serializer.validated_data['password'] = make_password(user_password)
     
-        self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+#         self.perform_create(serializer)
+#         headers = self.get_success_headers(serializer.data)
+#         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
     
         
         
-class UserDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = UserModel.objects.all()
-    serializer_class = CustomUserSerializer
-    lookup_field = "id"
+# class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = UserModel.objects.all()
+#     serializer_class = CustomUserSerializer
+#     lookup_field = "id"
     
     
     

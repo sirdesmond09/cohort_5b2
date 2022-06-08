@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "account",
     "coreapi",
     'drf_yasg',
+    'djoser',
     ]
 
 MIDDLEWARE = [
@@ -133,3 +134,16 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'account.CustomUser'
+
+DJOSER = {
+    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': 'activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+    'SEND_CONFIRMATION_EMAIL' : True,
+    'USER_CREATE_PASSWORD_RETYPE':True,
+    'SERIALIZERS': {
+        'user_create': 'account.serializers.CustomUserSerializer',
+        },
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
